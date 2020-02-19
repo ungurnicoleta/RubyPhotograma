@@ -8,7 +8,7 @@ Devise.setup do |config|
   # confirmation, reset password and unlock tokens in the database.
   # Devise will use the `secret_key_base` as its `secret_key`
   # by default. You can change it below and use your own secret key.
-  # config.secret_key = 'f91850e57bdb96b62c1d369e9d0bea660869a205ba8884513a31ef1f24fcb53705d607519bdd51e2b7932765407b6e66fc9d765d4ba3cd9791a4ee3855708762'
+  # config.secret_key = '71ffb91c6d7fff4ea680ee20605f099aa9ecb4b000df951cf9402c245ac987ed42db87491367b942d507f55ab2485ab74293f8a1bff7789440002571ffb49c96'
 
   # ==> Controller configuration
   # Configure the parent class to the devise controllers.
@@ -114,7 +114,7 @@ Devise.setup do |config|
   config.stretches = Rails.env.test? ? 1 : 11
 
   # Set up a pepper to generate the hashed password.
-  # config.pepper = '293034cf31baf9ecd1acbb2530d38d450cf8beb11ec00d3e63c273ff50cbf986675c11678c71939be4d9e59451d6607405badff77cd452e94df3ec91e1ab04c2'
+  # config.pepper = '3f7c3b2b0bbd8011e34daa0b56cf89d72053acf603b16868ce59f364f2a7740c45f4e6b12cf642ac8377a92578534441490262d6acf1aba98e0186c543fceb8b'
 
   # Send a notification to the original email when the user's email is changed.
   # config.send_email_changed_notification = false
@@ -147,7 +147,6 @@ Devise.setup do |config|
   # unconfirmed_email column, and copied to email column on successful confirmation.
   config.reconfirmable = true
 
-  # Defines which key will be used when confirming an account
   # config.confirmation_keys = [:email]
 
   # ==> Configuration for :rememberable
@@ -233,6 +232,7 @@ Devise.setup do |config|
   # "users/sessions/new". It's turned off by default because it's slower if you
   # are using only default views.
   # config.scoped_views = false
+  config.scoped_views = true
 
   # Configure the default scope given to Warden. By default it's the first
   # devise role declared in your routes (usually :user).
