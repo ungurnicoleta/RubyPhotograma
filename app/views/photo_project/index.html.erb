@@ -1,0 +1,28 @@
+<h1>Listing Photo Projects</h1>
+
+<table>
+  <thead>
+  <tr>
+    <th>Title</th>
+    <th>Date</th>
+    <th>Price</th>
+    <th colspan="3"></th>
+  </tr>
+  </thead>
+
+  <% @photo_projects.each do |photo_project| %>
+    <tr>
+      <td><%= photo_project.title %></td>
+      <td><%= photo_project.date %></td>
+      <td><%= photo_project.price %></td>
+      <td><%= link_to 'Show', photo_project %></td>
+      <td><%= link_to 'Edit', edit_photo_project_path(photo_project) %></td>
+      <td><%= link_to 'Destroy', photo_project, method: :delete,
+                      data: { confirm: 'Are you sure?' } %></td>
+    </tr>
+  <% end %>
+</table>
+
+<br>
+
+<%= link_to 'New Photo Project', new_photo_project_path %>

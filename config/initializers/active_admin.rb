@@ -229,13 +229,13 @@ ActiveAdmin.setup do |config|
   # You can add a navigation menu to be used in your application, or configure a provided menu
   #
   # To change the default utility navigation to show a link to your website & a logout btn
-    config.namespace :admin do |admin|
-      admin.build_menu :utility_navigation do |menu|
-        admin.add_current_user_to_menu menu
-        menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
-        admin.add_logout_button_to_menu menu
-      end
+  config.namespace :admin do |admin|
+    admin.build_menu :utility_navigation do |menu|
+      admin.add_current_user_to_menu menu
+      menu.add label: "My Great Website", url: "http://www.mygreatwebsite.com", html_options: { target: :blank }
+      admin.add_logout_button_to_menu menu
     end
+  end
   #
   # If you wanted to add a static menu item to the default menu provided:
   #
