@@ -27,6 +27,8 @@ gem 'jbuilder', '~> 2.7'
 #
 # PROJECT SPECIFIC GEMS
 gem 'devise'
+# Devise token auth
+gem 'devise_token_auth'
 
 gem 'activeadmin'
 # Reduces boot times through caching; required in config/boot.rb
