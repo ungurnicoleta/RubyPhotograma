@@ -12,9 +12,9 @@ Photograma is a Ruby on Rails project created for my CS bachelor thesis. The mai
   
 ### Tech
 
-* [Ruby in Rails](https://rubyonrails.org/) - HTML enhanced for web apps!
+* [Ruby in Rails](https://rubyonrails.org/) 
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
-* [PostgreSQL](https://www.postgresql.org) - Markdown parser done right. Fast and easy to extend.
+* [PostgreSQL](https://www.postgresql.org)
 * [Heroku](https://dashboard.heroku.com/)
 
 ### Installation
