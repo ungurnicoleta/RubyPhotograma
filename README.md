@@ -19,7 +19,7 @@ Photograma is a Ruby on Rails project created for my CS bachelor thesis. The mai
 
 ### Installation
 
-This project requires [Ruby in Rails](https://rubyonrails.org/). For Ruby versions you can use ```rbenv```.
+This project requires [Ruby on Rails](https://rubyonrails.org/). For Ruby versions you can use ```rbenv```.
 Check here how to install Ruby Version Control ->  [rbenv](https://www.sitepoint.com/up-and-running-with-rbenv/).
 Install the dependencies and devDependencies and start the server.
 
