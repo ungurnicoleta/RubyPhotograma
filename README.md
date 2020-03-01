@@ -12,15 +12,16 @@ Photograma is a Ruby on Rails project created for my CS bachelor thesis. The mai
   
 ### Tech
 
-* [Ruby in Rails](https://rubyonrails.org/) 
+* [Ruby on Rails](https://rubyonrails.org/) 
 * [JavaScript](https://developer.mozilla.org/en-US/docs/Web/JavaScript)
 * [PostgreSQL](https://www.postgresql.org)
 * [Heroku](https://dashboard.heroku.com/)
 
 ### Installation
 
-This project requires [Ruby in Rails](https://rubyonrails.org/) v6+ to run.
-Install the dependencies and start the server.
+This project requires [Ruby in Rails](https://rubyonrails.org/). For Ruby versions you can use ```rbenv```.
+Check here how to install Ruby Version Control ->  [rbenv](https://www.sitepoint.com/up-and-running-with-rbenv/).
+Install the dependencies and devDependencies and start the server.
 
 ```clone or download the repository```
 ```sh
