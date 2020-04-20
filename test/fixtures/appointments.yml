@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  owner_id: 
+  photographer_id: 
+  starting_time: 
+  ending_time: 
+  appointment_status: MyString
+
+two:
+  owner_id: 
+  photographer_id: 
+  starting_time: 
+  ending_time: 
+  appointment_status: MyString

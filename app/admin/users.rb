@@ -2,18 +2,13 @@ ActiveAdmin.register User do
 
   permit_params :email, :name, :username, :phone, :avatar, :role_id
   index do
-    column "ID" do |user|
-      user.id
-    end
+    column "ID", &:id
     column "Email" do |user|
       link_to user.username, admin_user_path(user)
     end
-    column "Email" do |user|
-      user.email
-    end
-    column "Name" do |user|
-      user.name
-    end
+    column "Email", &:email
+    column "Name", &:name
+    column "Avatar", &:avatar
     column :roles do |user|
     user.roles.collect {|c| c.name.capitalize }.to_sentence
   end
@@ -34,9 +29,16 @@ ActiveAdmin.register User do
   end
 
   form do |f|
+
     f.inputs "User Details" do
-        f.input :roles, :collection => Role.global,
-                :label_method => lambda { |el| t "simple_form.options.user.roles.#{el.name}" }
+      f.input :email
+      f.input :password
+      f.input :name
+      f.input :username
+      f.input :avatar
+      f.input :roles, collection: Role.global,
+              label_method: lambda { |el| t "simple_form.options.user.roles.#{el.name}" }
+
     end
     f.actions
   end

@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Owner:</strong>
+  <%= @appointment.owner_id %>
+</p>
+
+<p>
+  <strong>Photographer:</strong>
+  <%= @appointment.photographer_id %>
+</p>
+
+<p>
+  <strong>Starting time:</strong>
+  <%= @appointment.starting_time %>
+</p>
+
+<p>
+  <strong>Ending time:</strong>
+  <%= @appointment.ending_time %>
+</p>
+
+<p>
+  <strong>Appointment status:</strong>
+  <%= @appointment.appointment_status %>
+</p>
+
+<%= link_to 'Edit', edit_appointment_path(@appointment) %> |
+<%= link_to 'Back', appointments_path %>

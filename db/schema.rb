@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_03_05_194432) do
+ActiveRecord::Schema.define(version: 2020030900133454) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,6 +29,15 @@ ActiveRecord::Schema.define(version: 2020_03_05_194432) do
     t.index ["resource_type", "resource_id"], name: "index_active_admin_comments_on_resource_type_and_resource_id"
   end
 
+  create_table "addresses", force: :cascade do |t|
+    t.string "city"
+    t.string "region"
+    t.string "country"
+    t.bigint "zip"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
   create_table "admin_users", force: :cascade do |t|
     t.string "email", default: "", null: false
     t.string "encrypted_password", default: "", null: false
@@ -41,12 +50,43 @@ ActiveRecord::Schema.define(version: 2020_03_05_194432) do
     t.index ["reset_password_token"], name: "index_admin_users_on_reset_password_token", unique: true
   end
 
+  create_table "appointments", force: :cascade do |t|
+    t.integer "owner_id"
+    t.integer "photographer_id"
+    t.datetime "starting_time"
+    t.datetime "ending_time"
+    t.string "appointment_status"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "follows", force: :cascade do |t|
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.integer "follower_id"
+    t.integer "followee_id"
+  end
+
   create_table "photo_projects", force: :cascade do |t|
     t.string "title"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_photo_projects_on_user_id"
+  end
+
+  create_table "photo_tags", force: :cascade do |t|
+    t.integer "photo_id"
+    t.integer "tag_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+  end
+
+  create_table "photos", force: :cascade do |t|
+    t.integer "photographer_id"
+    t.text "url"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "projects", force: :cascade do |t|
@@ -63,6 +103,12 @@ ActiveRecord::Schema.define(version: 2020_03_05_194432) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "tags", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "users", force: :cascade do |t|
