@@ -8,7 +8,7 @@ use Rack::Cors do
     # Only allow a request for a specific host
     resource '*',
              headers: :any,
-             expose: %w(access-token expiry token-type uid client),
+             expose: %w[access-token expiry token-type uid client],
              methods: %i[get post options delete put]
   end
 end

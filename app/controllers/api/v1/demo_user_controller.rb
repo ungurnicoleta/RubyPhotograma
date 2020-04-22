@@ -1,8 +1,6 @@
 module Api
   module V1
-    class DemoUserController < ::  Api::V1::ApplicationController
-      before_action :authenticate_user!
-
+    class DemoUserController < :: Api::V1::ApplicationController
       def members_only
         render json: {
             data: {
