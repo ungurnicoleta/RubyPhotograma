@@ -18,11 +18,7 @@ Rails.application.routes.draw do
       get :authenticated, to: 'application#authenticated_route'
     end
   end
-
-
-
   get 'welcome/index'
-  get :auth, to: 'application#authenticated_user'
 
   ActiveAdmin.routes(self)
   root 'application#hello'
