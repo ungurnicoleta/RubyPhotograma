@@ -5,10 +5,12 @@ Rails.application.routes.draw do
   resources :photos
   resources :appointments
   namespace :api do
-    scope :v1 do
+    namespace :v1 do
       mount_devise_token_auth_for 'User', at: 'auth'
+      # this route will authorize requests using the User class
+      get 'demo/members_only', to: 'demo_user#members_only'
+      end
     end
-  end
 
   get 'welcome/index'
   get :auth, to: 'application#authenticated_user'

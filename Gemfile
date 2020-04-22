@@ -43,6 +43,9 @@ gem 'omniauth-facebook'
 gem 'omniauth-github'
 gem 'omniauth-google-oauth2'
 
+gem 'active_model_serializers'
+gem 'rack-cors'
+
 group :production do
 
 end
