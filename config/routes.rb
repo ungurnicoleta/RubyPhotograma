@@ -15,6 +15,7 @@ Rails.application.routes.draw do
     namespace :v1 do
       # this route will authorize requests using the User class
       get 'demo/members_only', to: 'demo_user#members_only'
+      get 'demo/user_photo_projects', to: 'demo_user#user_photo_projects'
       get :authenticated, to: 'application#authenticated_route'
     end
   end

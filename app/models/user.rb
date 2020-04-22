@@ -25,14 +25,27 @@ class User < ApplicationRecord
             uniqueness: { case_sensitive: false }
 
   def followers_with_user
-    { user_id: self.id, followers: self.followers }
+    { user_id: id, followers: followers }
   end
 
   def followees_with_user
-    { user_id: self.id, followees: self.followees }
+    { user_id: id, followees: followees }
   end
 
   def a_follower?(followee)
-    self.followees.include? followee
+    followees.include? followee
+  end
+
+  def follow(user_id)
+    followee_follows.create(followee_id: user_id)
+  end
+
+  def unfollow(user_id)
+    followee_follows.find_by(followee_id: user_id).destroy
+  end
+
+  def is_following?(user_id)
+    relationship = Follow.find_by(follower_id: id, followee_id: user_id)
+    true if relationship
   end
 end

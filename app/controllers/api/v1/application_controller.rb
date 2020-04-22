@@ -8,7 +8,7 @@ module Api
       respond_to :json
       before_action :authenticate_user!
       def authenticated_route
-        render json: { user: current_user }
+        render json: { ™user: current_user }
       end
       end
     end

@@ -1,6 +1,7 @@
 ActiveAdmin.register User do
 
-  permit_params :email, :name, :username, :phone, :avatar, :role_id
+  permit_params :email, :name, :username, :phone, :avatar, :followers_count,
+ :followees_count,:role_id
   index do
     column "ID", &:id
     column "Email" do |user|
@@ -9,6 +10,8 @@ ActiveAdmin.register User do
     column "Email", &:email
     column "Name", &:name
     column "Avatar", &:avatar
+    column "Followers count", &:followers_count
+    column "Followees count", &:followees_count
     column :roles do |user|
     user.roles.collect {|c| c.name.capitalize }.to_sentence
   end
@@ -22,6 +25,8 @@ ActiveAdmin.register User do
       row :username
       row :email
       row :phone
+      row :followers_count
+      row :followees_count
       row :roles do |user|
       user.roles.collect {|r| r.name.capitalize }.to_sentence
     end
