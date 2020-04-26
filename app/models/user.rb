@@ -1,6 +1,7 @@
 class User < ApplicationRecord
   rolify
   has_many :photo_projects
+  has_one :photographer
 
   # follower_follows "names" the Follow join table for accessing through the follower association
   has_many :follower_follows, foreign_key: :followee_id, class_name: 'Follow'
@@ -12,6 +13,7 @@ class User < ApplicationRecord
   # source: :followee matches with the belong_to :followee identification in the Follow model
   has_many :followees, through: :followee_follows, source: :followee
 
+  mount_uploader :avatar, ImageUploader
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -48,4 +50,5 @@ class User < ApplicationRecord
     relationship = Follow.find_by(follower_id: id, followee_id: user_id)
     true if relationship
   end
+
 end

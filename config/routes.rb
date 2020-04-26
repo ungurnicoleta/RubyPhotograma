@@ -11,14 +11,21 @@ Rails.application.routes.draw do
     end
   end
 
-  namespace :api do
+  namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
+      resources :users do
+        resources :photographers
+      end
       # this route will authorize requests using the User class
+      #
+      get 'demo/my_photographer', to: 'demo#my_photographer'
       get 'demo/members_only', to: 'demo_user#members_only'
       get 'demo/user_photo_projects', to: 'demo_user#user_photo_projects'
+      get 'demo/photographers', to: 'demo_user#photographers'
       get :authenticated, to: 'application#authenticated_route'
     end
   end
+
   get 'welcome/index'
 
   ActiveAdmin.routes(self)
