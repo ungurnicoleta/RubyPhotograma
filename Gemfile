@@ -48,7 +48,14 @@ gem 'rack-cors'
 
 gem 'carrierwave', '~> 2.0'
 gem 'country-select'
+gem 'mini_magick'
 gem 'rmagick'
+
+gem 'fog-aws'
+
+gem 'activeadmin_addons'
+gem 'dotenv-rails'
+
 
 group :production do
 

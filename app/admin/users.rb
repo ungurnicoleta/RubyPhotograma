@@ -1,7 +1,8 @@
 ActiveAdmin.register User do
 
   permit_params :email, :name, :username, :phone, :avatar, :followers_count,
- :followees_count, :role_id, :photographer_id
+ :followees_count, :role_ids, :photographer_id, :password, :password_confirmation
+
   index do
     column 'ID', &:id
     column 'Email' do |user|
@@ -9,59 +10,49 @@ ActiveAdmin.register User do
     end
     column 'Email', &:email
     column 'Name', &:name
-    column 'Avatar', &:avatar
+    column 'Avatar' do |user|
+      image_tag user.avatar.thumb.url if user&.avatar&.thumb&.url&.present?
+    end
     column 'Followers count', &:followers_count
     column 'Followees count', &:followees_count
     column :roles do |user|
-    user.roles.collect {|c| c.name }.to_sentence
+    user.roles.collect(&:name).to_sentence
     end
-    column :photographers do |user|
-      user.photographer
-  end
+    column :photographers, &:photographer
     actions
   end
 
-  show do |ad|
+  show do
     attributes_table do
       row :id
       row :name
       row :username
       row :email
       row :phone
-      row :avatar
+      row :avatar do |user|
+        image_tag user.avatar.thumb.url
+      end
       row :followers_count
       row :followees_count
       row :roles do |user|
-      user.roles.collect(&:name).to_sentence
+        user.roles.collect(&:name).to_sentence
       end
-      row :photographers do |user|
-        user.photographer
-    end
+      row :photographers, &:photographer
     end
   end
 
   form do |f|
-
+    f.semantic_errors # shows errors on :base
     f.inputs 'User Details' do
       f.input :email
       f.input :name
+      f.input :password if f.object.new_record?
+      f.input :password_confirmation if f.object.new_record?
       f.input :username
       f.input :avatar
       f.input :roles, collection: Role.global,
-              label_method: lambda { |el| t "simple_form.options.user.roles.#{el.name}" }
-
+              label_method: ->(el) { t "simple_form.options.user.roles.#{el.name}" }
     end
     f.actions
-  end
-
-  controller do
-    def update
-      params[:user].each{|k, v| resource.send("#{k}=", v)}
-      super
-    end
-
-    def permitted_params
-      params.permit user: [:email, :name, :username, :phone, :avatar, :role_id, :photographer_id]
-    end
   end
 end
