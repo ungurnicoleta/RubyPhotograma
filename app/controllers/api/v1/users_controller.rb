@@ -37,7 +37,7 @@ module Api
       private
 
       def user_params
-        params.permit(:name, :username, :phone, :avatar, :role_ids)
+        params.permit(:name, :phone, :avatar, :role_ids)
       end
 
       def photographer_params

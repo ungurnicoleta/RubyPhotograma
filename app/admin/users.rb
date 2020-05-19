@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-  permit_params :email, :name, :username, :phone, :avatar, :followers_count,
+  permit_params :email, :name, :phone, :avatar, :followers_count,
  :followees_count, :role_ids, :photographer_id, :password, :password_confirmation
 
   index do
@@ -26,7 +26,6 @@ ActiveAdmin.register User do
     attributes_table do
       row :id
       row :name
-      row :username
       row :email
       row :phone
       row :avatar do |user|
@@ -48,7 +47,6 @@ ActiveAdmin.register User do
       f.input :name
       f.input :password if f.object.new_record?
       f.input :password_confirmation if f.object.new_record?
-      f.input :username
       f.input :avatar
       f.input :roles, collection: Role.global,
               label_method: ->(el) { t "simple_form.options.user.roles.#{el.name}" }
