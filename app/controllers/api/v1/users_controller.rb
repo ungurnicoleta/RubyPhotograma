@@ -23,9 +23,12 @@ module Api
 
       # PUT method for updating in database a user based on id
       def update
-        user = User.find(params[:id])
-        if user.update_attributes(user_params)
-          render json: user, status: :ok
+        user = current_user
+        if user.update(user_params)
+          role = user.roles
+          render json: {
+              data: user,
+              my_roles: role }, status: :ok
         else
           render json: { message: 'ERROR' }, status: :unprocessable_entity
         end
@@ -34,11 +37,11 @@ module Api
       private
 
       def user_params
-        params.permit(:name, :username, :phone,:avatar)
+        params.permit(:name, :username, :phone, :avatar, :role_ids)
       end
 
       def photographer_params
-        params.permit(:description,:secondDescription, :rating, :price, :cameraDescription)
+        params.permit(:description, :secondDescription, :rating, :price, :cameraDescription)
       end
     end
     end
