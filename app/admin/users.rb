@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-  permit_params :email, :name, :phone, :avatar, :role_ids, :photographer_id, :password, :password_confirmation
+  permit_params :email, :name, :phone, :followers_count, :followees_count, :avatar, :role_ids, :photographer_id, :password, :password_confirmation
 
   index do
     column 'ID', &:id
@@ -12,8 +12,8 @@ ActiveAdmin.register User do
     column 'Avatar' do |user|
       image_tag user.avatar.thumb.url if user&.avatar&.thumb&.url&.present?
     end
-    # column 'Followers count', &:followers_count
-    # column 'Followees count', &:followees_count
+    column 'Followers count', &:followers_count
+    column 'Followees count', &:followees_count
     column :roles do |user|
     user.roles.collect(&:name).to_sentence
     end
@@ -30,8 +30,8 @@ ActiveAdmin.register User do
       row :avatar do |user|
         image_tag user.avatar.thumb.url
       end
-      # row :followers_count
-      # row :followees_count
+      row :followers_count
+      row :followees_count
       row :roles do |user|
         user.roles.collect(&:name).to_sentence
       end
