@@ -3,6 +3,9 @@ class User < ApplicationRecord
   has_many :photo_projects
   has_one :photographer
 
+
+  accepts_nested_attributes_for :photographer
+
   # follower_follows "names" the Follow join table for accessing through the follower association
   has_many :follower_follows, foreign_key: :followee_id, class_name: 'Follow'
   # source: :follower matches with the belong_to :follower identification in the Follow model

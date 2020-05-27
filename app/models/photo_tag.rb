@@ -1,2 +1,0 @@
-class PhotoTag < ApplicationRecord
-end

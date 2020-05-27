@@ -8,11 +8,22 @@ module Api
 
       #GET method to show photographer for a user
       def show
-        user = User.find(params[:id])
-        photographer = user.photographer
-        render json: { message: 'SUCCESS',
-                       my_photographer: photographer }, status: :ok
+        user = current_user
+        if user.update(user_params)
+          role = user.roles
+          photographer = user.photographer
+          address = user.photographer.address
+          render json: {
+              data: user,
+              my_roles: role,
+              my_address: address,
+              photographer: photographer
+          }, status: :ok
+        else
+          render json: { message: 'ERROR' }, status: :unprocessable_entity
+        end
       end
+
 
       def edit
         @user = User.find(params[:id])
@@ -26,10 +37,14 @@ module Api
         user = current_user
         if user.update(user_params)
           role = user.roles
+          photographer = user.photographer
           render json: {
               data: user,
-              my_roles: role }, status: :ok
+              my_roles: role,
+              photographer: photographer
+          }, status: :ok
         else
+
           render json: { message: 'ERROR' }, status: :unprocessable_entity
         end
       end
@@ -37,6 +52,7 @@ module Api
       private
 
       def user_params
+        # params.require(:user).permit(:name, :phone, :avatar, :role_ids, photographer: [ :id, :description, :price, :city ] )
         params.permit(:name, :phone, :avatar, :role_ids)
       end
 

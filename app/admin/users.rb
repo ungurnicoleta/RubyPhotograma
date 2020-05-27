@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-  permit_params :email, :name, :phone, :followers_count, :followees_count, :avatar, :role_ids, :photographer_id, :password, :password_confirmation
+  permit_params :email, :name, :phone, :followers_count, :followees_count, :avatar, :roles_ids, :photographer_id, :password, :password_confirmation
 
   index do
     column 'ID', &:id

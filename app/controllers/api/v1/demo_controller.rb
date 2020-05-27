@@ -1,6 +1,6 @@
 module Api
   module V1
-    class DemoUserController < :: Api::V1::ApplicationController
+    class DemoController < :: Api::V1::ApplicationController
       def members_only
         render json: {
             data: {
@@ -45,10 +45,19 @@ module Api
         end
       end
 
+
+      def get_photographers_for_city
+        photographers = Photographer.all.where(city: params[:city])
+        json_string = PhotographerSerializer.new(photographers).serializable_hash
+        render json: {
+            data: json_string
+        }, status: 200
+      end
+
       private
 
       def photographer_params
-        params.permit(:description,:secondDescription, :rating, :price, :cameraDescription)
+        params.permit(:description, :secondDescription, :rating, :price, :cameraDescription, :city)
       end
 
       end

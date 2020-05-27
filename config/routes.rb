@@ -14,15 +14,30 @@ Rails.application.routes.draw do
   namespace :api, defaults: {format: 'json'} do
     namespace :v1 do
       resources :users do
-        resources :photographers
+        resources :photographers do
+          resources :addresses
+          resources :photos
+        end
       end
+
+      resources :photographers do
+        resources :addresses
+        resources :photos
+      end
+      resources :addresses
+      resources :photos
+
       # this route will authorize requests using the User class
       #
       get 'demo/my_photographer', to: 'demo#my_photographer'
       get 'demo/members_only', to: 'demo_user#members_only'
       get 'demo/user_photo_projects', to: 'demo_user#user_photo_projects'
       get 'demo/photographers', to: 'demo_user#photographers'
+      get 'addresses/get_city', to: 'addresses#get_city'
+      get 'demo/get_photographers_for_city', to: 'demo#get_photographers_for_city'
+      get 'photos/get_photo_by_photographer', to: 'photos#get_photo_by_photographer'
       get :authenticated, to: 'application#authenticated_route'
+
     end
   end
 

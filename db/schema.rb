@@ -92,6 +92,7 @@ ActiveRecord::Schema.define(version: 2020030900133454) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.bigint "user_id", null: false
+    t.string "city"
     t.index ["user_id"], name: "index_photographers_on_user_id"
   end
 
