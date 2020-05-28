@@ -35,7 +35,6 @@ module Api
         photographer = Photographer.new(photographer_params)
         photographer.user_id = current_user.id
         photographer.address = address
-
         json_string = PhotographerSerializer.new(photographer).serialized_json
         if photographer.save
           render json: json_string, status: :ok

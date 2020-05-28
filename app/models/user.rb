@@ -3,7 +3,6 @@ class User < ApplicationRecord
   has_many :photo_projects
   has_one :photographer
 
-
   accepts_nested_attributes_for :photographer
 
   # follower_follows "names" the Follow join table for accessing through the follower association
