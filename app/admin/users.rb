@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
 
-  permit_params :email, :name, :phone, :followers_count, :followees_count, :avatar, :roles_ids, :photographer_id, :password, :password_confirmation
+  permit_params :email, :name, :phone, :followers_count, :followees_count, :avatar, :role_id, :photographer_id, :password, :password_confirmation, :roles
 
   index do
     column 'ID', &:id
@@ -14,9 +14,9 @@ ActiveAdmin.register User do
     end
     column 'Followers count', &:followers_count
     column 'Followees count', &:followees_count
-    column :roles do |user|
-    user.roles.collect(&:name).to_sentence
-    end
+    # column :roles do |user|
+    # user.roles.collect(&:name).to_sentence
+    # end
     column :photographers, &:photographer
     actions
   end
@@ -32,9 +32,9 @@ ActiveAdmin.register User do
       end
       row :followers_count
       row :followees_count
-      row :roles do |user|
-        user.roles.collect(&:name).to_sentence
-      end
+      # row :roles do |user|
+      #   user.roles.collect(&:name).to_sentence
+      # end
       row :photographers, &:photographer
     end
   end
@@ -47,8 +47,9 @@ ActiveAdmin.register User do
       f.input :password if f.object.new_record?
       f.input :password_confirmation if f.object.new_record?
       f.input :avatar
-      f.input :roles, collection: Role.global,
-              label_method: ->(el) { t "simple_form.options.user.roles.#{el.name}" }
+      f.input :phone
+      # f.input :roles, collection: Role.global,
+      #         label_method: ->(el) { t "simple_form.options.user.roles.#{el.name}" }
     end
     f.actions
   end

@@ -7,9 +7,6 @@ ActiveAdmin.register Photo do
     column 'URL' do |photo|
       image_tag photo.url.thumb.url if photo&.url&.thumb&.url&.present?
     end
-    column 'PHOTOGRAPHER' do |photographer|
-      link_to photographer.id, admin_photographer_path(photographer)
-    end
     column :tags do |photo|
       photo.tags.collect(&:name).to_sentence
     end
@@ -36,7 +33,7 @@ ActiveAdmin.register Photo do
       f.input :photographer
 
       f.input :tags, collection: Tag.all,
-                label_method: ->(el) { t "simple_form.options.photo.tags.#{el.name}" }
+              label_method: ->(el) { t "simple_form.options.photo.tags.#{el.name}" }
     end
     f.actions
   end

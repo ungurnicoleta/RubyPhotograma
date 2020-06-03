@@ -10,19 +10,25 @@ module Api
         }, status: 200
       end
 
-      def user_photo_projects
-        photo_projects = PhotoProject.all.where(user_id: current_user.id)
-        render json: {
-            data: {
-                :projects => photo_projects
-            }
-        }, status: 200
-      end
+      def user_photographer
+        @user = current_user
 
-      def all_users
-        @users = User.select('*').all
-        render json: @users.to_json
-      end
+        if @user.photographer.present?
+          @photographer = @user.photographer
+          @address = @user.photographer.address
+          render json: {
+              data: @user,
+              my_address: @address,
+              photographer: @photographer
+          }, status: :ok
+        else
+          render json: {
+              data: @user,
+              my_address: [],
+              photographer: []
+          }, status: :ok
+          end
+        end
 
       def photographers
         photographers = Role.find_by_name('PHOTOGRAPHER').users.all.where(id: current_user.id)

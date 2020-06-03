@@ -10,12 +10,10 @@ module Api
       def show
         user = current_user
         if user.update(user_params)
-          role = user.roles
           photographer = user.photographer
           address = user.photographer.address
           render json: {
               data: user,
-              my_roles: role,
               my_address: address,
               photographer: photographer
           }, status: :ok
@@ -52,7 +50,6 @@ module Api
       private
 
       def user_params
-        # params.require(:user).permit(:name, :phone, :avatar, :role_ids, photographer: [ :id, :description, :price, :city ] )
         params.permit(:name, :phone, :avatar, :role_ids)
       end
 

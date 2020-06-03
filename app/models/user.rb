@@ -2,6 +2,7 @@ class User < ApplicationRecord
   rolify
   has_many :photo_projects
   has_one :photographer
+  has_many :appointments
 
   accepts_nested_attributes_for :photographer
 

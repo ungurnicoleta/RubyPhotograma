@@ -36,6 +36,8 @@ ActiveRecord::Schema.define(version: 2020030900133454) do
     t.bigint "zip"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
+    t.decimal "latitude", precision: 10, scale: 6
+    t.decimal "longitude", precision: 10, scale: 6
   end
 
   create_table "admin_users", force: :cascade do |t|

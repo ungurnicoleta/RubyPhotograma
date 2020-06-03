@@ -35,6 +35,7 @@ Rails.application.routes.draw do
       get 'demo/photographers', to: 'demo_user#photographers'
       get 'addresses/get_city', to: 'addresses#get_city'
       get 'demo/get_photographers_for_city', to: 'demo#get_photographers_for_city'
+      get 'demo/user_photographer', to: 'demo#user_photographer'
       get 'photos/get_photo_by_photographer', to: 'photos#get_photo_by_photographer'
       get :authenticated, to: 'application#authenticated_route'
 

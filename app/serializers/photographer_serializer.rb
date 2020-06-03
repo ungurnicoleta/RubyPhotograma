@@ -13,4 +13,37 @@ class PhotographerSerializer
   attribute :avatar do |object|
     object&.user&.avatar
   end
+
+  attribute :email do |object|
+    object&.user&.email
+  end
+
+  attribute :phone do |object|
+    object&.user&.phone
+  end
+
+  attribute :region do |object|
+    object&.address&.region
+  end
+
+  attribute :country do |object|
+    object&.address&.country
+  end
+
+  attribute :city_adr do |object|
+    object&.address&.city
+  end
+
+  attribute :zip do |object|
+    object&.address&.zip
+  end
+
+  attribute :latitude do |object|
+    object&.address&.latitude
+  end
+
+  attribute :longitude do |object|
+    object&.address&.longitude
+  end
+
 end
