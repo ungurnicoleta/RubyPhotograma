@@ -24,6 +24,8 @@ module Api
 
       end
 
+
+
       def get_photo_by_photographer
         photos = Photo.all.where(photographer_id: params[:photographer_id])
         json_string = PhotoSerializer.new(photos).serializable_hash
