@@ -2,9 +2,14 @@ class User < ApplicationRecord
   rolify
   has_many :photo_projects
   has_one :photographer
+
   has_many :appointments
 
   accepts_nested_attributes_for :photographer
+
+  has_many :likes
+  has_many :users, through: :likes
+  accepts_nested_attributes_for :likes, allow_destroy: true
 
   # follower_follows "names" the Follow join table for accessing through the follower association
   has_many :follower_follows, foreign_key: :followee_id, class_name: 'Follow'

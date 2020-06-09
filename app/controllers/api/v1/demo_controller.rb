@@ -2,17 +2,13 @@ module Api
   module V1
     class DemoController < :: Api::V1::ApplicationController
       def members_only
-        render json: {
-            data: {
-                message: "Welcome #{current_user.email}",
-                user: current_user
-            }
-        }, status: 200
+        render json: {data: { message: "Welcome #{current_user.email}",
+                              user: current_user } }, status: 200
       end
+
 
       def user_photographer
         @user = current_user
-
         if @user.photographer.present?
           @photographer = @user.photographer
           @address = @user.photographer.address

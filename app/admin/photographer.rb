@@ -7,6 +7,7 @@ ActiveAdmin.register Photographer do
     f.semantic_errors # shows errors on :base
     f.inputs 'Photographer Details' do
       f.input :user
+      f.input :city
       f.input :description
       f.input :secondDescription
       f.input :cameraDescription
