@@ -23,9 +23,14 @@ Rails.application.routes.draw do
       resources :photographers do
         resources :addresses
         resources :photos
+        resources :styles
       end
       resources :addresses
       resources :photos
+      resources :appointments
+      resources :styles
+      resources :hashtags
+      resources :likes
 
       # this route will authorize requests using the User class
       #
@@ -37,6 +42,9 @@ Rails.application.routes.draw do
       get 'demo/get_photographers_for_city', to: 'demo#get_photographers_for_city'
       get 'demo/user_photographer', to: 'demo#user_photographer'
       get 'photos/get_photo_by_photographer', to: 'photos#get_photo_by_photographer'
+      get 'styles/get_styles_for_photographer', to: 'styles#get_styles_for_photographer'
+      get 'hashtags/get_hashtags_for_photographer', to: 'hashtags#get_hashtags_for_photographer'
+      get 'likes/get_likes_for_user', to: 'likes#get_likes_for_user'
       get :authenticated, to: 'application#authenticated_route'
 
     end

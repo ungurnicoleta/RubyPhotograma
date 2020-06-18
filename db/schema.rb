@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(version: 2020030900133454) do
   end
 
   create_table "appointments", force: :cascade do |t|
-    t.integer "owner_id"
+    t.integer "user_id"
     t.integer "photographer_id"
     t.datetime "starting_time"
     t.datetime "ending_time"
@@ -67,6 +67,22 @@ ActiveRecord::Schema.define(version: 2020030900133454) do
     t.datetime "updated_at", precision: 6, null: false
     t.integer "follower_id"
     t.integer "followee_id"
+  end
+
+  create_table "hashtags", force: :cascade do |t|
+    t.bigint "photographer_id"
+    t.bigint "style_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["photographer_id"], name: "index_hashtags_on_photographer_id"
+    t.index ["style_id"], name: "index_hashtags_on_style_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "owner_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "photo_projects", force: :cascade do |t|
@@ -119,6 +135,13 @@ ActiveRecord::Schema.define(version: 2020030900133454) do
     t.datetime "updated_at", precision: 6, null: false
     t.index ["name", "resource_type", "resource_id"], name: "index_roles_on_name_and_resource_type_and_resource_id"
     t.index ["resource_type", "resource_id"], name: "index_roles_on_resource_type_and_resource_id"
+  end
+
+  create_table "styles", force: :cascade do |t|
+    t.string "name"
+    t.integer "photographer_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
   end
 
   create_table "tags", force: :cascade do |t|
