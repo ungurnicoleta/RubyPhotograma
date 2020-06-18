@@ -31,7 +31,7 @@ module Api
       end
 
       def create
-        address = Address.find(1)
+        address = Address.where(city: params[:city]).take!
         photographer = Photographer.new(photographer_params)
         photographer.user_id = current_user.id
         photographer.address = address

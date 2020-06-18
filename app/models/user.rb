@@ -5,7 +5,7 @@ class User < ApplicationRecord
 
   has_many :appointments
 
-  accepts_nested_attributes_for :photographer
+  accepts_nested_attributes_for :photographer, allow_destroy: true
 
   has_many :likes
   has_many :users, through: :likes
