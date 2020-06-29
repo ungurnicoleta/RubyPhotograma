@@ -1,11 +1,12 @@
 class PhotographerSerializer
   include FastJsonapi::ObjectSerializer
-  attributes :id, :description, :secondDescription, :rating, :price, :cameraDescription, :user_id, :city
+  attributes :id, :description, :secondDescription, :rating, :price, :cameraDescription, :user_id, :city, :photos, :hashtags
   set_type :photographer  # optional
   set_id :id # optional
   belongs_to :user
   belongs_to :address
-  has_many :photos
+  has_many :photos, serializer: PhotoSerializer
+  has_many :hashtags, serializer: HashtagSerializer
 
   attribute :name do |object|
     object&.user&.name
