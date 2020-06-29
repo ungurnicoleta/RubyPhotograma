@@ -20,6 +20,12 @@ module Api
         render json: { data: json_string }, status: 200
       end
 
+      def get_hashtags_for_my_profile
+        hashtags = Hashtag.where(photographer_id: current_user.photographer.id)
+        json_string = HashtagSerializer.new(hashtags).serializable_hash
+        render json: { data: json_string }, status: 200
+      end
+
       def create
         photographer_id = current_user.photographer.id
         style_id = params[:style_id]

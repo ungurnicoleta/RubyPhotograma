@@ -44,6 +44,7 @@ Rails.application.routes.draw do
       get 'photos/get_photo_by_photographer', to: 'photos#get_photo_by_photographer'
       get 'styles/get_styles_for_photographer', to: 'styles#get_styles_for_photographer'
       get 'hashtags/get_hashtags_for_photographer', to: 'hashtags#get_hashtags_for_photographer'
+      get 'hashtags/get_hashtags_for_my_profile', to: 'hashtags#get_hashtags_for_my_profile'
       get 'likes/get_likes_for_user', to: 'likes#get_likes_for_user'
       get :authenticated, to: 'application#authenticated_route'
 
