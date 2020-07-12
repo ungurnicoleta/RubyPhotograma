@@ -30,7 +30,17 @@ $ bundler install
 $ rails server
 ```
 
-### Todos
- - Write MORE Tests
+## `SCREENSHOTS` - website example
+<p align="center">
+  <img width="900" height="400" src="https://github.com/ungurnicoleta/RubyPhotograma/blob/master/public/ActiveAdminUsers.png">
+</p>
 
-**In art we trust!**
+<p align="center">
+  <img width="900" height="400" src="https://github.com/ungurnicoleta/RubyPhotograma/blob/master/public/ActiveAdminPhotographers.png">
+</p>
+
+<p align="center">
+  <img width="900" height="500" src="https://github.com/ungurnicoleta/RubyPhotograma/blob/master/public/Database2.png">
+</p>
+
+
