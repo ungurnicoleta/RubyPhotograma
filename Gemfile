@@ -48,7 +48,7 @@ gem 'omniauth-google-oauth2'
 gem 'active_model_serializers'
 gem 'rack-cors'
 
-gem 'carrierwave', '~> 2.0'
+gem 'carrierwave', '~> 2.1'
 gem 'country-select'
 gem 'mini_magick'
 gem 'rmagick'
